@@ -1,14 +1,13 @@
 
-// Q.3) Implement a callback function that takes two numbers and prints their sum after 1 second.
+// Q.4 Write a function that prints “Task 1” immediately and “Task 2” after 2 seconds.
 
-function addNumbers(a, b, callback) {
+function printTasks() {
+  console.log("Task 1");
+
   setTimeout(() => {
-    const sum = a + b;
-    callback(sum);
-  }, 1000);
+    console.log("Task 2");
+  }, 2000);
 }
 
 // Example usage:
-addNumbers(5, 7, (result) => {
-  console.log("Sum after 1 second:", result);
-});
+printTasks();
