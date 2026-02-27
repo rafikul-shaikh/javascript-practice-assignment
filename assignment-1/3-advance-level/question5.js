@@ -26,7 +26,7 @@ function fetchPayments(callback) {
 }
 
 
-// ❌ CALLBACK HELL STARTS HERE
+//  CALLBACK HELL STARTS HERE
 fetchUser(function (user) {
     fetchOrders(user.id, function (orders) {
         fetchPayments(function (payment) {
