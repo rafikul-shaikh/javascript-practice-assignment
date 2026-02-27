@@ -37,7 +37,7 @@ function makePayment(userName, movieName, seats, callback) {
 
 // Step 4: Confirm Ticket
 function confirmTicket(userName, movieName, seats) {
-    console.log("🎟 Ticket Confirmed!");
+    console.log("Ticket Confirmed!");
     console.log("Name: " + userName);
     console.log("Movie: " + movieName);
     console.log("Seats: " + seats);
