@@ -1,0 +1,32 @@
+// Q.9 Use Promise.allSettled with one resolve and one reject and log the results
+
+function successTask() {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            resolve("Rafikul task success");
+        }, 1000);
+    });
+}
+
+function failTask() {
+    return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            reject("Rafikul task failed");
+        }, 1500);
+    });
+}
+
+Promise.allSettled([successTask(), failTask()])
+    .then(function(results) {
+        results.forEach(function(result, index) {
+            console.log("Promise", index + 1, "status", result.status);
+
+            if (result.status === "fulfilled") {
+                console.log("Value", result.value);
+            } else {
+                console.log("Reason", result.reason);
+            }
+
+            console.log("-------------------");
+        });
+    });
