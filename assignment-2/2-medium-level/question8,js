@@ -1,0 +1,25 @@
+// Q.8 Simulate two race Promises fast API and slow API using Promise.race
+
+function fastAPI() {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            resolve("Rafikul fast API response");
+        }, 1000);
+    });
+}
+
+function slowAPI() {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            resolve("Rafikul slow API response");
+        }, 3000);
+    });
+}
+
+Promise.race([fastAPI(), slowAPI()])
+    .then(function(result) {
+        console.log("Winner:", result);
+    })
+    .catch(function(error) {
+        console.log("Error:", error);
+    });
