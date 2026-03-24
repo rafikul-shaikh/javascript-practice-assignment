@@ -1,4 +1,4 @@
-// Q.11 Implement a Promise that resolves to Data Loaded after simulating an API delay
+// Q.11 Implement a Promise that resolves to Data Loaded after simulating an API delaygit statu 
 
 function loadData() {
     return new Promise(function(resolve) {
