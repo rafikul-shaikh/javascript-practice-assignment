@@ -1,28 +1,46 @@
-// Q.2 Write async function to fetch paginated API data until page equals 5
+// Q.3 Simulate async database transaction where if one step fails rollback everything
 
-function fetchPage(page) {
+function delay(ms) {
     return new Promise(function(resolve) {
-        setTimeout(function() {
-            resolve({
-                page: page,
-                data: "Data for page " + page + " for Rafikul"
-            });
-        }, 1000);
+        setTimeout(resolve, ms);
     });
 }
 
-async function fetchPaginatedData() {
-    let page = 1;
+async function debitAmount() {
+    await delay(1000);
+    console.log("Amount debited for Rafikul");
+}
 
-    while (page <= 5) {
-        const response = await fetchPage(page);
-        console.log("Page:", response.page, "-", response.data);
-        page++;
+async function creditAmount() {
+    await delay(1000);
+
+    // simulate failure
+    throw new Error("Credit failed");
+
+    // console.log("Amount credited");
+}
+
+async function rollbackTransaction() {
+    await delay(1000);
+    console.log("Rollback completed for Rafikul");
+}
+
+async function processTransaction() {
+
+    try {
+        await debitAmount();
+        await creditAmount();
+
+        console.log("Transaction successful for Rafikul");
+
+    } catch (error) {
+
+        console.log("Transaction failed:", error.message);
+
+        await rollbackTransaction();
     }
-
-    console.log("All pages fetched for Rafikul");
 }
 
 // Calling the function
 
-fetchPaginatedData();
+processTransaction();
